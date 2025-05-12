@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  redis-node1:
+    image: redis:7.2
+    container_name: redis-node1
+    ports:
+      - "7000:7000"
+      - "17000:17000"
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./redis-cluster/node1:/usr/local/etc/redis
+    networks:
+      - redis-cluster
+
+  redis-node2:
+    image: redis:7.2
+    container_name: redis-node2
+    ports:
+      - "7001:7001"
+      - "17001:17001"
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./redis-cluster/node2:/usr/local/etc/redis
+    networks:
+      - redis-cluster
+
+  redis-node3:
+    image: redis:7.2
+    container_name: redis-node3
+    ports:
+      - "7002:7002"
+      - "17002:17002"
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./redis-cluster/node3:/usr/local/etc/redis
+    networks:
+      - redis-cluster
+
+  redis-node4:
+    image: redis:7.2
+    container_name: redis-node4
+    ports:
+      - "7003:7003"
+      - "17003:17003"
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./redis-cluster/node4:/usr/local/etc/redis
+    networks:
+      - redis-cluster
+
+  redis-node5:
+    image: redis:7.2
+    container_name: redis-node5
+    ports:
+      - "7004:7004"
+      - "17004:17004"
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./redis-cluster/node5:/usr/local/etc/redis
+    networks:
+      - redis-cluster
+
+  redis-node6:
+    image: redis:7.2
+    container_name: redis-node6
+    ports:
+      - "7005:7005"
+      - "17005:17005"
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./redis-cluster/node6:/usr/local/etc/redis
+    networks:
+      - redis-cluster
+
+networks:
+  redis-cluster:
+    driver: bridge
+
+
