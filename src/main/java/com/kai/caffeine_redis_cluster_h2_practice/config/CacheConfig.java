@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 @EnableCaching
 public class CacheConfig {
 
-    // ✅ 1. 使用本地 Caffeine 快取
+    // 1. 使用本地 Caffeine 快取
 //    @Bean
 //    public CacheManager caffeineCacheManager() {
 //        CaffeineCacheManager manager = new CaffeineCacheManager("userCache");
@@ -29,7 +29,7 @@ public class CacheConfig {
 //        return manager;
 //    }
 
-    // ⛔ 2. 只使用 Redis 快取（目前註解）
+    // 2. 只使用 Redis 快取
     /*
     @Bean
     public CacheManager redisCacheManager(RedisConnectionFactory factory) {
@@ -37,7 +37,7 @@ public class CacheConfig {
     }
     */
 
-    // ⛔ 3. Caffeine + Redis 組合快取（目前註解）
+    // 3. Caffeine + Redis 組合快取
 
     @Bean
     public CacheManager compositeCacheManager(RedisConnectionFactory factory) {
