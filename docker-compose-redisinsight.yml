@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  redisinsight :
+    image: redis/redisinsight:latest
+    container_name: my-redisinsight
+    ports:
+      - "5540:5540"

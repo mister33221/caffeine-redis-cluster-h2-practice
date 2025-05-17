@@ -30,27 +30,25 @@ public class CacheConfig {
 //    }
 
     // 2. 只使用 Redis 快取
-    /*
     @Bean
     public CacheManager redisCacheManager(RedisConnectionFactory factory) {
         return RedisCacheManager.builder(factory).build();
     }
-    */
+
 
     // 3. Caffeine + Redis 組合快取
-
-    @Bean
-    public CacheManager compositeCacheManager(RedisConnectionFactory factory) {
-        CaffeineCacheManager caffeine = new CaffeineCacheManager("userCache");
-        caffeine.setCaffeine(Caffeine.newBuilder()
-            .expireAfterWrite(5, TimeUnit.MINUTES)
-            .maximumSize(1000));
-
-        RedisCacheManager redis = RedisCacheManager.builder(factory).build();
-
-        CompositeCacheManager manager = new CompositeCacheManager(caffeine, redis);
-        manager.setFallbackToNoOpCache(false);
-        return manager;
-    }
+//    @Bean
+//    public CacheManager compositeCacheManager(RedisConnectionFactory factory) {
+//        CaffeineCacheManager caffeine = new CaffeineCacheManager("userCache");
+//        caffeine.setCaffeine(Caffeine.newBuilder()
+//            .expireAfterWrite(5, TimeUnit.SECONDS)
+//            .maximumSize(1000));
+//
+//        RedisCacheManager redis = RedisCacheManager.builder(factory).build();
+//
+//        CompositeCacheManager manager = new CompositeCacheManager(caffeine, redis);
+//        manager.setFallbackToNoOpCache(false);
+//        return manager;
+//    }
 
 }
